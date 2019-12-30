@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 black = "*"
+bump2version = "*"
 
 [packages]
 gInfer = {path = ".",editable = true}
