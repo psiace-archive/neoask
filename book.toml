@@ -1,0 +1,6 @@
+[book]
+authors = ["Chojan Shang"]
+language = "en"
+multilingual = false
+src = "docs/src"
+title = "gInfer docs"
