@@ -13,4 +13,6 @@ dist/
 build/
 *.egg-info/
 
+book/
+
 .vscode/
