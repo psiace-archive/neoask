@@ -16,3 +16,9 @@ build/
 book/
 
 .vscode/
+
+.env
+
+examples/
+
+Pipfile.lock
