@@ -1,0 +1,2 @@
+FLASK_APP=autoneoask
+FLASK_ENV=development
