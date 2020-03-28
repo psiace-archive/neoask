@@ -13,12 +13,10 @@ dist/
 build/
 *.egg-info/
 
-book/
+.env
 
 .vscode/
 
-.env
-
-examples/
+.tox
 
 Pipfile.lock
