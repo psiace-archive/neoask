@@ -1,1 +1,4 @@
+include neoask/db/schema/neoask.sql
+graft neoask/static
+graft neoask/templates
 global-exclude *.pyc
