@@ -6,17 +6,16 @@ verify_ssl = true
 [dev-packages]
 black = "*"
 bump2version = "*"
+pytest = "*"
+coverage = "*"
+tox = "*"
 
 [packages]
-gInfer = {path = ".",editable = true}
-fastapi = "*"
-uvicorn = "*"
-py2neo = "*"
+neoask = {path = ".",editable = true}
+flask = "*"
+python-dotenv = "*"
 loguru = "*"
-pandas = "*"
+waitress = "*"
 
 [requires]
-python_version = "3.7"
-
-[pipenv]
-allow_prereleases = true
+python_version = "3.8"
