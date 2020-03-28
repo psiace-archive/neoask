@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block header %} <h2> {% block title %} Visualization Graph Query {% endblock %} </h2>
+<p>You can <i><mark>query</mark></i> the graphs here, and even customize the <b>neo4j</b> graph database used.</p>
+A little cypher, awesome result. Everything at your fingertips.
+{% endblock %}
+{% block source %}
+<style type="text/css">
+  textarea {
+    font: 10pt arial;
+  }
+
+  #viz {
+    width: 40%;
+    height: 600px;
+    border: 1px solid lightgray;
+    font: 22pt arial;
+    margin: 10px;
+    float: left;
+    clear: left;
+    overflow: hidden;
+  }
+
+  #form {
+    width: 40%;
+    height: 600px;
+    border: 1px solid lightgray;
+    font: 12pt arial;
+    margin: 10px;
+    padding-left: 15px;
+    float: right;
+    clear: right;
+    overflow: hidden;
+  }
+</style>
+
+<script src="{{url_for('static', filename='neovis.js/neovis.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  var viz;
+
+  function draw() {
+    var config = {
+      container_id: "viz",
+      server_url: $("#url").val(),
+      server_user: $("#user").val(),
+      server_password: $("#pass").val(),
+      labels: {},
+      relationships: {},
+      initial_cypher: $("#cypher").val()
+    };
+    viz = new NeoVis.default(config);
+    viz.render();
+    console.log(viz);
+  }
+</script>
+{% endblock %}
+{% block content %}
+<hr>
+<section style="height: 600px;">
+  <aside id="viz"></aside>
+  <aside id="form">
+    <header>
+      <h2>Graph Query</h2>
+    </header>
+    <label for="url">URL</label><input id="url" name="url" type="text" value={{ host }} /><br />
+    <label for="user">Username</label><input id="user" name="user" type="text" value={{ user }} /><br />
+    <label for="pass">Password</label><input id="pass" name="pass" type="password" value={{ password }} /> <br />
+    <label for="query">Cypher</label>
+    <textarea rows="4" cols="45" id="cypher">MATCH (n) RETURN n LIMIT 25</textarea>
+    <button type="submit" id="reload" style="margin-right: 10px;">Submit</button>
+    <button type="submit" id="stabilize" style="margin-left: 10px;">Stabilize</button>
+  </aside>
+</section>
+<script>
+  $(document).ready(function () {
+    draw();
+  });
+
+  $("#reload").click(function () {
+    draw();
+
+    var cypher = $("#cypher").val();
+    if (cypher.length > 3) {
+      viz.renderWithCypher(cypher);
+    } else {
+      console.log("reload");
+      viz.reload();
+    }
+  });
+
+  $("#stabilize").click(function () {
+    viz.stabilize();
+  });
+</script>
+{% endblock %}

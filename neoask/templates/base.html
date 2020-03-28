@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %} - Neovis + Flask</title>
+  <meta name="description" content="Neoask - An application of knowledge graph from Visualization">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mvp.css/mvp.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% block source %}{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h2>Neovis + Flask</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/query">Query</a></li>
+        {% if g.user %}
+        <li><span>{{ g.user['username'] }}</span> | <a href="{{ url_for('auth.logout') }}">Log Out</a>
+          {% else %}
+        <li><a href="{{ url_for('auth.register') }}">Register</a> | <a href="{{ url_for('auth.login') }}">Log In</a>
+          {% endif %}
+      </ul>
+    </nav>
+    {% block header %}{% endblock %}
+  </header>
+  <main>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    {% block footer %}
+    <hr />
+    <p style="float: left;">
+      Made by <a href="https://github.com/psiace" target="_blank">Chojan Shang &nearr;</a>. </p>
+    <p style="float: right;">Powered by <a href="https://github.com/psiace/neoask" target="_blank">Neoask &nearr;</a> =
+      <a href="https://github.com/neo4j-contrib/neovis.js" target="_blank">NeoVis.js &nearr;</a> + <a
+        href="https://flask.palletsprojects.com" target="_blank">Flask &nearr;</a>.<br />
+    </p>
+    <br />
+    <br />
+    <br />
+    {% endblock %}
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Log In{% endblock %}
+{% block content %}
+<section>
+<form method="post">
+  <header>
+      <h2>Log In</h2>
+  </header>
+  <label for="username">Username</label>
+  <input name="username" id="username" required />
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required />
+  <p><small>Have no account? <a href="/auth/register">Register Here.</a></small></p>
+  <button type="submit">Submit</button>
+</form>
+</section>
+{% endblock %}
