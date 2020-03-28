@@ -1,3 +1,0 @@
-# Summary
-
-[gInfer](./intro.md)
