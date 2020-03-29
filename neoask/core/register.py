@@ -1,8 +1,8 @@
 from loguru import logger
 
 import neoask.bps.auth.view as auth
-from neoask.db import sqlite
 import neoask.bps.neovis.view as neovis
+from neoask.db import sqlite
 
 
 def register_extensions(app):
