@@ -3,6 +3,17 @@
 **Neoask** means **neovis** + **flask**. It started as an effort to visualize the data in `neo4j`.
 At present, we hope that it can become a simple application skeleton for the so-called _"knowledge graph"_ project.
 
+## TODO
+
+Although it is just a skeleton, it should also show its potential to become a large-scale application in some aspects.
+
+- [ ] Searcher/DataLoader, etc. - What users need is not graph, but knowledge.
+- [ ] DashBoard - Understand your architecture and data.
+- [ ] API - Standardizing & Supporting the separation of front-end and back-end (?)
+- [ ] Better UI - Just change static / template files, for data visualization.
+- [ ] Access Control.
+- [ ] Others - Basic CMS and Docs. (?)
+
 ## Usage
 
 You should have at least `python` and `pipenv` installed before using.
